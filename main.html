@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Netflix Clone - Home</title>
+
+  <!-- Google Fonts Montserrat -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <img
+      src="https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg"
+      alt="Netflix Logo"
+      class="logo"
+    />
+    <nav>
+      <a href="#">Home</a>
+      <a href="#">TV Shows</a>
+      <a href="#">Movies</a>
+      <a href="#">My List</a>
+    </nav>
+  </header>
+
+  <main id="content"></main>
+
+  <script>
+    const movieData = [
+      {
+        category: "Popular on Netflix",
+        movies: [
+          { title: "Extraction", img: "https://image.tmdb.org/t/p/w200/kqjL17yufvn9OVLyXYpvtyrFfak.jpg" },
+          { title: "The Witcher", img: "https://image.tmdb.org/t/p/w200/8UlWHLMpgZm9bx6QYh0NFoq67TZ.jpg" },
+          { title: "The Queen's Gambit", img: "https://image.tmdb.org/t/p/w200/z8CExJekGrEThbpMXAmCFvvgoJR.jpg" },
+          { title: "Stranger Things", img: "https://image.tmdb.org/t/p/w200/h1B7tW0t399VDjAcWJh8m87469b.jpg" },
+        ],
+      },
+      {
+        category: "Trending Now",
+        movies: [
+          { title: "Joker", img: "https://image.tmdb.org/t/p/w200/y95lQLnuNKdPAzw9F9Ab8kJ80c3.jpg" },
+          { title: "Ad Astra", img: "https://image.tmdb.org/t/p/w200/xBHvZcjRiWyobQ9kxBhO6B2dtRI.jpg" },
+          { title: "1917", img: "https://image.tmdb.org/t/p/w200/riYInlsq2kf1AWoGm80JQW5dLKp.jpg" },
+          { title: "Frozen II", img: "https://image.tmdb.org/t/p/w200/q719jXXEzOoYaps6babgKnONONX.jpg" },
+        ],
+      },
+    ];
+
+    const content = document.getElementById("content");
+
+    movieData.forEach((section) => {
+      const sectionEl = document.createElement("section");
+      sectionEl.classList.add("row");
+
+      const heading = document.createElement("h2");
+      heading.textContent = section.category;
+      sectionEl.appendChild(heading);
+
+      const posters = document.createElement("div");
+      posters.classList.add("row-posters");
+
+      section.movies.forEach((movie) => {
+        const img = document.createElement("img");
+        img.src = movie.img;
+        img.alt = movie.title;
+        img.title = movie.title;
+        posters.appendChild(img);
+      });
+
+      sectionEl.appendChild(posters);
+      content.appendChild(sectionEl);
+    });
+  </script>
+</body>
+</html>
+
